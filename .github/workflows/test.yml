@@ -1,20 +1,9 @@
-name: "units-test"
+name: "Push commits on discord"
 on:
   pull_request:
-  push:
-    branches:
-      - main
-      - 'releases/*'
+    types: ["opened","reopened","synchronize"]
 
 jobs:
-  # unit tests
-  units:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - run: npm ci
-    - run: npm test
-
   # test action works running from the graph
   test:
     runs-on: ubuntu-latest
@@ -22,4 +11,8 @@ jobs:
     - uses: actions/checkout@v3
     - uses: ./
       with:
-        milliseconds: 1000
+        owner: ${{ github.repository_owner }}
+        repo: ${{ github.event.repository.name }}
+        github_api_key: ${{ secrets.GITHUB_API_KEY }}
+        telegram_bot_token: ${{ secrets.TELEGRAM_TOKEN }}
+        telegram_chat_id: ${{ secrets.TELEGRAM_CHAT_ID }}

@@ -1,13 +1,23 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Pull request remainder'
+description: 'Forward Pull request remainder message on discord or telegram'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  owner: 
+    description: 'The owner of the repository'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  repo:
+    description: "The repository name"
+    required: true
+  github_api_key:
+    description: "The token to use to access the Github API"
+    required: true
+  discord_webhook_url:
+    description: "Discord webhook URL to send message"
+    required: false
+  telegram_bot_token:
+    description: "Telegram bot token"
+  telegram_chat_id:
+    description: "Telegram chat id"
+
 runs:
   using: 'node16'
   main: 'dist/index.js'
