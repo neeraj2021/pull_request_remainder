@@ -19,9 +19,11 @@
   ],
   "author": "Neeraj kumar",
   "license": "MIT",
-  "homepage": "https://github.com/neeraj2021/pull_request_remainde#readme",
   "dependencies": {
-    "@actions/core": "^1.10.0"
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
+    "axios": "^1.4.0",
+    "moment": "^2.29.4"
   },
   "devDependencies": {
     "@vercel/ncc": "^0.36.1",
